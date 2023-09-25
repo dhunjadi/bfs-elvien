@@ -1,0 +1,53 @@
+.p-home {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    &__header {
+        &_content {
+            display: flex;
+            justify-content: space-between;
+            padding: 3.2rem 5rem;
+
+            & > div {
+                display: flex;
+                gap: 1rem;
+            }
+
+            & > h1 {
+                align-self: center;
+            }
+        }
+
+        &_divider {
+            margin: 0 5rem;
+            border-top: 1px solid $color-divider-medium;
+        }
+    }
+
+    &__content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & > * {
+            margin-bottom: 2rem;
+        }
+
+        &_icon {
+            max-width: 8rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: $color-text-primary;
+        }
+
+        small {
+            font-size: 1.4rem;
+            color: $color-text-secondary;
+        }
+    }
+}
