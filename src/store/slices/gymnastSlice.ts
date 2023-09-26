@@ -1,14 +1,16 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {Gymnast} from '../../types';
-import {getGymnastList} from '../thunks/gymnastThunks';
+import {Country, Gymnast} from '../../types';
+import {getCountryList, getGymnastList} from '../thunks/gymnastThunks';
 
 export type GymnastSliceState = {
     gymnastList: Gymnast[];
+    countryList: Country[];
     isLoading: boolean;
 };
 
 const initialState: GymnastSliceState = {
     gymnastList: [],
+    countryList: [],
     isLoading: false,
 };
 
@@ -25,6 +27,17 @@ export const gymnastSlice = createSlice({
             state.isLoading = false;
         });
         builder.addCase(getGymnastList.rejected, (state: GymnastSliceState) => {
+            state.isLoading = false;
+        });
+
+        builder.addCase(getCountryList.pending, (state: GymnastSliceState) => {
+            state.isLoading = true;
+        });
+        builder.addCase(getCountryList.fulfilled, (state: GymnastSliceState, action: PayloadAction<Country[]>) => {
+            state.countryList = action.payload;
+            state.isLoading = false;
+        });
+        builder.addCase(getCountryList.rejected, (state: GymnastSliceState) => {
             state.isLoading = false;
         });
     },

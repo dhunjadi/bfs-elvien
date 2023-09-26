@@ -1,0 +1,29 @@
+.c-statusBar {
+    width: fit-content;
+    padding: 0.1rem 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: 0.2rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &--applied {
+        background-color: $color-success;
+        color: $color-text-on-primary;
+    }
+
+    &--declined {
+        background-color: $color-alert;
+        color: $color-text-on-primary;
+    }
+
+    &--canceled {
+        background-color: $color-basic-tertiary;
+        color: $color-text-on-primary;
+    }
+
+    &--awaitingResponse {
+        background-color: $color-warning;
+        color: $color-text-on-primary;
+    }
+}

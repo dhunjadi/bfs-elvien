@@ -3,14 +3,16 @@ import Navbar from './components/Navbar';
 import GhostIcon from './assets/GhostIcon.svg';
 import {RootState, useAppDispatch, useAppSelector} from './store/store';
 import {useEffect} from 'react';
-import {getGymnastList} from './store/thunks/gymnastThunks';
+import {getCountryList, getGymnastList} from './store/thunks/gymnastThunks';
+import Table from './components/Table';
 
 function App() {
-    const {gymnastList, isLoading} = useAppSelector((state: RootState) => state.gymnast);
+    const {gymnastList, countryList, isLoading} = useAppSelector((state: RootState) => state.gymnast);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(getGymnastList());
+        dispatch(getCountryList());
     }, [dispatch]);
     return (
         <div className="p-home">
@@ -38,11 +40,7 @@ function App() {
                         <Button varient="tertiary">Apply gymnasts</Button>
                     </>
                 ) : (
-                    <div>
-                        {gymnastList.map((gymnast) => {
-                            return <span>{gymnast.firstName} </span>;
-                        })}
-                    </div>
+                    <Table gymnastList={gymnastList} countryList={countryList} />
                 )}
             </main>
         </div>

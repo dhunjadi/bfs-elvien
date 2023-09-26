@@ -13,3 +13,11 @@ export type Gymnast = {
     club: string;
     dateOfBirth: string;
 };
+
+export type Country = {
+    cognitoId: string;
+    code: string;
+    name: string;
+    phoneCode: string;
+    flag: string;
+};
