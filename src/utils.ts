@@ -1,4 +1,4 @@
-export const formatDate = (inputDateStr: string) => {
+export const formatDate = (inputDateStr: string, showTime: boolean) => {
     const date = new Date(inputDateStr);
 
     const day = date.getDate();
@@ -9,5 +9,8 @@ export const formatDate = (inputDateStr: string) => {
 
     const formattedTime = `${hours}:${minutes < 10 ? `0${minutes}` : minutes}`;
 
-    return `${day}.${month}.${year}. ${formattedTime}`;
+    if (showTime) {
+        return `${day}.${month}.${year}. ${formattedTime}`;
+    }
+    return `${day}.${month}.${year}.`;
 };

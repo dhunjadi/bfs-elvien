@@ -1,0 +1,62 @@
+.c-table {
+    width: 90%;
+    font-size: 1.4rem;
+    text-align: left;
+    border-collapse: collapse;
+    border-radius: 1rem 1rem 0 0;
+    outline: 0.5px solid $color-divider-medium;
+
+    th {
+        background-color: $color-bg-table-header;
+        padding: 1.5rem;
+
+        &:first-child {
+            border-radius: 0.8rem 0 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 0.8rem 0 0;
+        }
+    }
+
+    tr:nth-child(even) {
+        background-color: $color-bg-table-row;
+    }
+
+    tr.even {
+        background-color: #ffffff;
+    }
+
+    tr.odd {
+        background-color: $color-bg-table-row;
+    }
+
+    &__actionsCol {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 1.2rem;
+
+        a {
+            color: $color-primary;
+            text-decoration: underline;
+        }
+    }
+
+    td {
+        padding: 1.5rem;
+        font-weight: 400;
+        color: $color-text-primary;
+
+        small {
+            font-size: 1.2rem;
+            color: $color-text-secondary;
+        }
+    }
+
+    button {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+}

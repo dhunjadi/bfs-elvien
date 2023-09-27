@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import {Country, Gymnast} from '../types';
 import {formatDate} from '../utils';
 import StatusBar from './StatusBar';
+import ArrowUpIcon from '../assets/ArrowUpIcon.svg';
+import ArrowDownIcon from '../assets/ArrowDownIcon.svg';
 
 interface TableProps {
     gymnastList: Gymnast[];
@@ -20,8 +22,14 @@ const Table = ({gymnastList, countryList}: TableProps) => {
         }
     };
 
+    const getActionText = (status: string): string => {
+        if (status === 'applied') return 'Request removal';
+        if (status === 'awaiting response') return 'Cancel';
+        return '';
+    };
+
     return (
-        <table>
+        <table className="c-table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -31,7 +39,7 @@ const Table = ({gymnastList, countryList}: TableProps) => {
                     <th>Team</th>
                     <th>Status</th>
                     <th>Date</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,16 +59,24 @@ const Table = ({gymnastList, countryList}: TableProps) => {
                             <td>
                                 <StatusBar text={item.status} />
                             </td>
-                            <td>{formatDate(item.date)}</td>
-                            <td>
-                                <button onClick={() => handleExpandRow(index)}>Expand</button>
+                            <td>{formatDate(item.date, true)}</td>
+                            <td className="c-table__actionsCol">
+                                <a>{getActionText(item.status)}</a>
+                                <button onClick={() => handleExpandRow(index)}>
+                                    <img src={expandedRow === index ? ArrowUpIcon : ArrowDownIcon} alt="arrow icon" />
+                                </button>
                             </td>
                         </tr>
                         {expandedRow === index && (
-                            <tr>
-                                <td colSpan={7}>
-                                    <div>Date of Birth: {formatDate(item.dateOfBirth)}</div>
-                                    <div>Phone Number: {item.phone}</div>
+                            <tr className={index % 2 === 0 ? 'even' : 'odd'}>
+                                <td colSpan={2}></td>
+                                <td colSpan={6}>
+                                    <div>
+                                        <strong>Date of Birth: </strong> <small>{formatDate(item.dateOfBirth, false)}</small>
+                                    </div>
+                                    <div>
+                                        <strong>Phone Number: </strong> <small>{item.phone}</small>
+                                    </div>
                                 </td>
                             </tr>
                         )}

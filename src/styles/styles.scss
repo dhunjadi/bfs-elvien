@@ -2,39 +2,3 @@
 @import './base/all';
 @import './pages/all';
 @import './components/all';
-
-table {
-    width: 90%;
-    font-size: 1.4rem;
-    text-align: left;
-    border-collapse: collapse;
-    border-radius: 1rem 1rem 0 0;
-
-    th {
-        background-color: $color-bg-table-header;
-        padding: 1.5rem;
-
-        &:first-child {
-            border-radius: 0.8rem 0 0 0;
-        }
-
-        &:last-child {
-            border-radius: 0 0.8rem 0 0;
-        }
-    }
-
-    tr:nth-child(even) {
-        background-color: $color-bg-table-row;
-    }
-
-    td {
-        padding: 1.5rem;
-        font-weight: 400;
-        color: $color-text-primary;
-
-        small {
-            font-size: 1.2rem;
-            color: $color-text-secondary;
-        }
-    }
-}
